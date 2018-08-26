@@ -1,0 +1,42 @@
+spring:
+    application:
+        name: middleware
+    devtools:
+        restart:
+            enabled: true
+    jackson:
+        serialization.indent_output: true
+        serialization.write_dates_as_timestamps: false
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:h2:mem:middb;DB_CLOSE_DELAY=-1
+        driverClassName: org.h2.Driver
+        username: mid
+        password: mid
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        database: H2
+        show-sql: false
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: false
+    liquibase:
+        change-log: classpath:liquibase/master.xml
+        contexts: dev
+server:
+    port: 8080
+
+security:
+    authentication:
+        jwt:
+            secret: my-secret-token-321
+            # Token is valid 24 hours
+            token-validity-in-seconds: 86400
+            token-validity-in-seconds-for-remember-me: 2592000
