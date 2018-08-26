@@ -26,33 +26,6 @@ public class HttpService {
         this.client = new OkHttpClient();
     }
 
-    public String doGetRequest(String url, String token) {
-        Request request;
-        if (StringUtils.hasText(token)) {
-            request = new Request.Builder()
-                .header("Authorization", token)
-                .url(url)
-                .build();
-        } else {
-            request = new Request.Builder()
-                .url(url)
-                .build();
-        }
-
-        try {
-            Response response = client.newCall(request).execute();
-            if (response.isSuccessful()) {
-                log.debug("Request successful to '{}'", url);
-                return response.body().string();
-            }
-            log.warn("Error in response of '{}'", url);
-            return null;
-        } catch (IOException e) {
-            log.warn("Error in request to '{}': {}", url, e.getMessage());
-            return null;
-        }
-    }
-
     public String doPostRequest(String url, String json) {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
