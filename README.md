@@ -16,6 +16,8 @@ Check https://github.com/gymitoso/library-front for more info.
 
 <strong>User: admin Password: admin</strong>
 
+<strong>Change server port (if necessary) in application.yml and docker run command</strong>
+
 ## Bonus
 - Jenkinsfile for build and send slack notifications.
 - Sonar properties for Sonar analysis.
