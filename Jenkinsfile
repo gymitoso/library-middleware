@@ -37,7 +37,7 @@ node {
             } catch (err) {
                 echo "no such container"
             }
-            sh "docker run --restart=always -d -p 8080:8080 --name library-middleware library-middleware"
+            sh "docker run --restart=always -d -p 8082:8082 --name library-middleware library-middleware"
         }
     } catch (e) {
       currentBuild.result = "FAILED"

@@ -5,6 +5,6 @@ ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
 
 CMD java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /app.war
 
-EXPOSE 8080
+EXPOSE 8082
 
 ADD *.war /app.war
